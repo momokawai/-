@@ -1,0 +1,385 @@
+:root {
+    --primary-green: #2e7d32;       /* 主色调：深绿 - 象征赛马场草坪 */
+    --secondary-green: #4caf50;     /* 辅助绿：中绿 - 用于交互元素 */
+    --light-green: #a5d6a7;         /* 浅绿：背景色 - 营造自然氛围 */
+    --accent-green: #81c784;        /* 强调绿：高亮交互状态 */
+    --dark-green: #1b5e20;          /* 深暗绿：文字对比色 */
+    --white: #fff;                  /* 白色：背景与文字 */
+    --gray-light: #f5f5f5;          /* 浅灰：分隔背景 */
+    --gray-medium: #e0e0e0;         /* 中灰：边框与分隔线 */
+    --shadow: 0 10px 30px rgba(0,0,0,0.08); /* 卡片阴影 */
+    --transition: all 0.3s ease;    /* 统一过渡动画 */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans JP", sans-serif;
+}
+body {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* 头部主视觉样式 - 四站点统一 */
+.hero-section {
+    text-align: center;
+    padding: 80px 20px 120px;
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    color: var(--white);
+    border-radius: 0 0 30px 30px;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--light-green);
+    border-radius: 50% 50% 0 0;
+    z-index: 0;
+}
+.hero-section h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+}
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+    transition: var(--transition);
+}
+.hero-image:hover {
+    transform: scale(1.02);
+}
+
+/* 标题样式 - 四站点统一 */
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--primary-green);
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+}
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--secondary-green);
+    border-radius: 3px;
+}
+
+/* 卡片通用样式 - 历史馆/传奇马/赛事指南 */
+.content-grid, .legend-grid, .race-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+.content-card, .legend-card, .race-card {
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+}
+.content-card:hover, .legend-card:hover, .race-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+.card-image, .legend-image, .race-image {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+.card-image img, .legend-image img, .race-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.content-card:hover .card-image img, 
+.legend-card:hover .legend-image img,
+.race-card:hover .race-image img {
+    transform: scale(1.05);
+}
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--primary-green));
+    opacity: 0.7;
+}
+.card-content {
+    padding: 30px;
+    position: relative;
+    z-index: 2;
+}
+.card-content h3, .legend-content h3, .race-content h3 {
+    color: var(--primary-green);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+.card-content p {
+    color: #555;
+    margin-bottom: 20px;
+}
+.read-more {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--secondary-green);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+.read-more:hover {
+    background-color: var(--primary-green);
+    transform: translateY(-2px);
+}
+
+/* 传奇马匹卡片特有样式 */
+.legend-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 3;
+}
+.legend-stats, .race-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+.stat-item {
+    background-color: var(--gray-light);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+.stat-item span:first-child {
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+/* 时间轴样式 - 历史馆特有 */
+.timeline-section {
+    margin-bottom: 80px;
+}
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--secondary-green);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 4px;
+}
+.timeline-item {
+    padding: 20px 40px 20px 0;
+    position: relative;
+    width: 50%;
+}
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+.timeline-dot {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -14px;
+    background-color: var(--white);
+    border: 4px solid var(--primary-green);
+    top: 25px;
+    border-radius: 50%;
+    z-index: 1;
+}
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -14px;
+}
+.timeline-content {
+    padding: 20px;
+    background-color: var(--white);
+    position: relative;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+.timeline-content img {
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+/* 档案网格样式 - 历史馆特有 */
+.archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+.archive-item {
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+.archive-item:hover {
+    transform: translateY(-5px);
+}
+.archive-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.archive-item h3 {
+    color: var(--primary-green);
+    margin: 15px 0 10px;
+    font-size: 1.2rem;
+}
+.archive-item p {
+    color: #666;
+    font-size: 0.9rem;
+    padding: 0 15px 15px;
+}
+
+/* 名人堂样式 - 传奇马馆特有 */
+.hall-of-fame {
+    background-color: var(--gray-light);
+    padding: 40px 20px;
+    border-radius: 15px;
+    margin-top: 60px;
+}
+.hof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+.hof-item {
+    text-align: center;
+}
+.hof-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    box-shadow: var(--shadow);
+}
+.hof-item h3 {
+    color: var(--primary-green);
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+.hof-item p {
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+/* 响应式设计 - 四站点统一 */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+    .content-grid, .legend-grid, .race-grid {
+        gap: 30px;
+    }
+    .card-image, .legend-image, .race-image {
+        height: 200px;
+    }
+    .card-content, .legend-content, .race-content {
+        padding: 25px;
+    }
+    .card-content h3, .legend-content h3, .race-content h3 {
+        font-size: 1.5rem;
+    }
+    .timeline::after {
+        left: 31px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 20px;
+    }
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    .timeline-dot {
+        left: 18px !important;
+        right: auto !important;
+    }
+}
+@media (max-width: 576px) {
+    .hero-section {
+        padding: 60px 20px 100px;
+    }
+    .card-content, .legend-content, .race-content {
+        padding: 20px;
+    }
+    .legend-badge {
+        top: 10px;
+        right: 10px;
+        padding: 4px 10px;
+        font-size: 0.8rem;
+    }
+    .legend-image, .race-image {
+        height: 180px;
+    }
+}

@@ -1,0 +1,300 @@
+/* 全局样式 - 保持原有功能 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* 头部导航 - 修改导航项为按钮式交互 */
+header {
+    background-color: rgb(4, 82, 34);
+    height: 80px;
+    width: 100%;
+    position: relative;
+}
+h1 {
+    color: white;
+    position: absolute;
+    left: 120px;
+    top: 0;
+    line-height: 80px;
+    font-size: 2rem;
+}
+header ul {
+    position: absolute;
+    right: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+header li {
+    display: inline;
+    margin-right: 4vw;
+}
+/* 导航项按钮式样式 */
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 6px 12px;        /* 增加内边距形成按钮厚度 */
+    border-radius: 4px;       /* 圆角边框 */
+    transition: all 0.3s ease; /* 动画过渡 */
+    position: relative;
+    overflow: hidden;
+}
+/* 悬停与选中状态效果 */
+header a:hover,
+header a.active {
+    background-color: rgba(255, 255, 255, 0.2);  /* 半透明背景 */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), /* 外发光 */
+                inset 0 0 5px rgba(255, 255, 255, 0.5); /* 内阴影 */
+    transform: translateY(-2px);                  /* 上移增强点击感 */
+}
+/* 点击波纹效果 */
+header a::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+header a:active::after {
+    width: 150px;
+    height: 150px;
+    opacity: 0.3;
+    transform: scale(0, 0) translate(-50%);
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+/* 响应式布局 - 保持原有适配逻辑 */
+@media (max-width: 768px) {
+    header ul {
+        display: none;
+    }
+    h1 {
+        left: 5vw;
+    }
+}
+/* 新闻区块 - 保持原有样式 */
+.news {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    height: 85vh;
+    background-image: url("images/f1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.news h2 {
+    font-size: 80px;
+    text-align: center;
+}
+.news p {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    margin: 25px 0;
+    text-align: center;
+}
+.news a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border: 2px solid #ACACAC;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+@media (max-width: 768px) {
+    .news h2 {
+        font-size: 50px;
+    }
+    .news p {
+        font-size: 16px;
+    }
+}
+@media (max-width: 576px) {
+    .news h2 {
+        font-size: 36px;
+    }
+    .news p {
+        font-size: 14px;
+    }
+}
+.sloganb {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(7, 153, 63);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+#menu-overlay ul {
+    position: relative;
+    list-style: none;
+    text-align: center;
+    display: block;
+}
+#menu-overlay ul li a {
+    position: relative;
+    text-decoration: none;
+    font-size: 2.5em;
+    padding: 0 10px;
+    color: black;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+#menu-overlay ul li a:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: white;
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: right;
+    transition: 0.5s transform;
+}
+#menu-overlay ul li a:hover:before {
+    transform: translateY(-50%) scaleX(1);
+    transform-origin: left;
+    transition: 0.5s transform;
+}
+/* 背景图片区块 - 保持原有样式 */
+.image_1 {
+    background-image: url("images/img1.png");
+    background-position: 0 0;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 680px;
+    width: 100%;
+}
+.image_1 .word {
+    position: relative;
+    top: 480px;
+    font-size: 55px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .image_1 {
+        height: 544px;
+    }
+    .image_1 .word {
+        top: 384px;
+        font-size: 44px;
+    }
+}
+@media (max-width: 576px) {
+    .image_1 {
+        height: 340px;
+    }
+    .image_1 .word {
+        top: 240px;
+        font-size: 27.5px;
+    }
+}
+.image_2 {
+    background-image: url("images/img2.png");
+    background-position: 0 0;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 680px;
+    width: 100%;
+}
+.image_2 .word {
+    position: relative;
+    top: 480px;
+    font-size: 55px;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .image_2 {
+        height: 544px;
+    }
+    .image_2 .word {
+        top: 384px;
+        font-size: 44px;
+    }
+}
+@media (max-width: 576px) {
+    .image_2 {
+        height: 340px;
+    }
+    .image_2 .word {
+        top: 240px;
+        font-size: 27.5px;
+    }
+}
+.image_3 {
+    background-image: url("images/img3.png");
+    background-position: 0 0;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 680px;
+    width: 100%;
+}
+.image_3 .word {
+    position: relative;
+    top: 480px;
+    font-size: 55px;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .image_3 {
+        height: 544px;
+    }
+    .image_3 .word {
+        top: 384px;
+        font-size: 44px;
+    }
+}
+@media (max-width: 576px) {
+    .image_3 {
+        height: 340px;
+    }
+    .image_3 .word {
+        top: 240px;
+        font-size: 27.5px;
+    }
+}
+/* 背景文字区块 - 保持原有样式 */
+.bg {
+    text-align: center;
+    font-size: 46px;
+    font-weight: bold;
+    height: 220px;
+    line-height: 220px;
+    background-color: rgb(5, 101, 42);
+    color: white;
+}
+@media (max-width: 768px) {
+    .bg {
+        font-size: 36px;
+        height: 180px;
+        line-height: 180px;
+    }
+}
+@media (max-width: 576px) {
+    .bg {
+        font-size: 28px;
+        height: 150px;
+        line-height: 150px;
+    }
+}
